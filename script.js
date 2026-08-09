@@ -1,5 +1,6 @@
 const button = document.getElementById('surpriseButton');
-const message = document.getElementById('surpriseMessage')
+const message = document.getElementById('surpriseMessage');
+
 button.addEventListener('click', function() {
   message.style.display = 'block';
   button.textContent = '❤️ Ты нажала спасибо!';
@@ -70,7 +71,7 @@ setInterval(createHeart, 400);
 
 // Функция создания фейерверка в точке (x, y)
 function createFirework(x, y) {
-    const particleCount = 75; // количество частиц
+    const particleCount = 50; // количество частиц
     const colors = [
         '#ff6b6b', '#feca57', '#ff9ff3', '#54a0ff', 
         '#5f27cd', '#ff9a9e', '#fad0c4', '#ffd93d',
@@ -156,6 +157,16 @@ if (fireworkButton) {
 
 // Альтернатива: фейерверк при клике в любом месте страницы (закомментировано, если не нужно)
 
-document.addEventListener('click', function(e) {
-    createFirework(e.clientX, e.clientY);
+//document.addEventListener('click', function(e) {
+  //  createFirework(e.clientX, e.clientY);
+//});
+
+// === АНИМИРОВАННЫЙ КОНВЕРТ ===
+document.addEventListener('DOMContentLoaded', function() {
+    const envelope = document.getElementById('envelope');
+    if (envelope) {
+        envelope.addEventListener('click', function() {
+            this.querySelector('.envelope').classList.toggle('open');
+        });
+    }
 });
