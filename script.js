@@ -67,3 +67,95 @@ heart.innerHTML = `<img src="${randomImage}" style="width: 40px; height: auto;">
 
 // Создаём новое сердечко каждые 300-600 мс
 setInterval(createHeart, 400);
+
+// Функция создания фейерверка в точке (x, y)
+function createFirework(x, y) {
+    const particleCount = 75; // количество частиц
+    const colors = [
+        '#ff6b6b', '#feca57', '#ff9ff3', '#54a0ff', 
+        '#5f27cd', '#ff9a9e', '#fad0c4', '#ffd93d',
+        '#6c5ce7', '#00b894', '#fd79a8', '#0984e3',
+        '#fdcb6e', '#e17055', '#a29bfe', '#ff7675'
+    ];
+
+    for (let i = 0; i < particleCount; i++) {
+        // Создаём элемент частицы
+        const particle = document.createElement('div');
+        particle.classList.add('firework-particle');
+
+        // Случайный размер (от 5 до 15 пикселей)
+        const size = Math.random() * 10 + 5;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+
+        // Случайный цвет из массива
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        particle.innerHTML = '✨';
+particle.style.background = 'none';
+particle.style.fontSize = size + 'px';
+particle.style.width = 'auto';
+particle.style.height = 'auto';
+
+        // Начальная позиция — центр взрыва
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+
+        // Случайное направление и дальность
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 500 + 50; // от 50 до 250 пикселей
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        // Случайная длительность анимации (от 0.6 до 1.2 секунды)
+        const duration = Math.random() * 0.9 + 0.6;
+
+        // Добавляем частицу в DOM
+        document.body.appendChild(particle);
+
+        // Анимация с помощью requestAnimationFrame
+        const startTime = performance.now();
+
+        function animateParticle(time) {
+            const elapsed = (time - startTime) / 1000; // в секундах
+            const progress = elapsed / duration;
+
+            if (progress >= 1) {
+                // Удаляем частицу, когда анимация закончена
+                particle.remove();
+                return;
+            }
+
+            // Эффект затухания и уменьшения размера
+            const opacity = 1 - progress;
+            const scale = 1 - progress * 0.6;
+            const currentX = x + dx * progress;
+            const currentY = y + dy * progress - 50 * progress * progress; // небольшой подъем вверх
+
+            particle.style.transform = `translate(${currentX - x}px, ${currentY - y}px) scale(${scale})`;
+            particle.style.opacity = opacity;
+
+            // Продолжаем анимацию
+            requestAnimationFrame(animateParticle);
+        }
+
+        requestAnimationFrame(animateParticle);
+    }
+}
+
+// Обработчик клика по кнопке
+const fireworkButton = document.getElementById('fireworkButton');
+if (fireworkButton) {
+    fireworkButton.addEventListener('click', function(e) {
+        // Координаты центра кнопки (или место клика)
+        const rect = this.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        createFirework(x, y);
+    });
+}
+
+// Альтернатива: фейерверк при клике в любом месте страницы (закомментировано, если не нужно)
+
+document.addEventListener('click', function(e) {
+    createFirework(e.clientX, e.clientY);
+});

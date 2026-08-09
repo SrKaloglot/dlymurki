@@ -263,3 +263,13 @@ footer {
         opacity: 0;
     }
 }
+
+.firework-particle {
+    position:fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    z-index: 99999;
+    will-change: transform, opacity;
+}
