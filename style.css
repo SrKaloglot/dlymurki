@@ -1,0 +1,265 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+     animation: gradientBG 15s ease infinite;
+    color: #3d3d3d;
+    text-align: center;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Шапка */
+header {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    padding: 40px 20px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+    color: #f04bda;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+header p {
+    font-size: 1.3em;
+    color: #fff;
+    opacity: 0.9;
+}
+
+/* Секции */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+h2 {
+    color: #e07a7a;
+    font-size: 2em;
+    border-bottom: 3px solid #fad0c4;
+    padding-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2em;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+/* Кнопка */
+button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.3em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+button:hover {
+    background: #e05555;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Сюрприз-сообщение */
+#surpriseMessage {
+    margin-top: 20px;
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+/* Анимация для сообщения */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Футер */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    color: #888;
+    font-size: 0.9em;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;  /* чтобы фото красиво обрезались под квадрат */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+.gallery figure {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.gallery img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.gallery figcaption {
+    margin-top: 8px;
+    font-size: 1em;
+    color: #555;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+.gallery figure {
+    position: relative;
+    display: inline-block;
+}
+
+.gallery figcaption {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery figure:hover figcaption {
+    opacity: 1;
+}
+/* === ТАЙМЕР "МЫ ВМЕСТЕ" === */
+#together-timer {
+    background: linear-gradient(135deg, #f8e8e8, #fad0c4);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#together-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.timer-block {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    min-width: 60px;
+}
+
+.timer-block span:first-child {
+    display: block;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #e07a7a;
+    line-height: 1.2;
+}
+
+.timer-label {
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Контейнер для падающих элементов (поверх всего, но под текстом) */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* чтобы не мешать кликам по кнопкам */
+    z-index: 9999; /* чтобы быть поверх всего */
+    overflow: hidden;
+}
+
+/* Каждое сердечко */
+.heart {
+    position: absolute;
+    top: -50px;
+    animation: fall linear forwards;
+    opacity: 0.7;
+    user-select: none;
+}
+
+/* Анимация падения */
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
